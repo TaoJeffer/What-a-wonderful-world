@@ -1,0 +1,13 @@
+# 小红书登录 Cookies 缓存（包含登录凭证，不应提交）
+xiaohongshu/.xhs_cookies.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# 自动生成的占位图片（非真实内容资源）
+xiaohongshu/images/
