@@ -249,10 +249,10 @@ def publish_post(page, post: dict, image_paths: list[Path]) -> None:
     publish_btn.click()
     log.info("已点击发布按钮，等待发布完成…")
 
-    # 等待发布成功提示
+    # 等待发布成功提示（尝试多个可能的成功信号）
     try:
         page.wait_for_selector(
-            "text=发布成功, text=已发布, .success-toast",
+            ":text('发布成功'), :text('已发布'), .success-toast",
             timeout=30_000,
         )
         log.info("🎉 发布成功！")
@@ -288,7 +288,7 @@ def main() -> None:
 
     # 导入内容配置
     sys.path.insert(0, str(Path(__file__).parent))
-    from content import POSTS  # noqa: PLC0415
+    from content import POSTS  # noqa: E402
 
     if args.index >= len(POSTS):
         log.error("帖子编号 %d 超出范围（共 %d 篇）", args.index, len(POSTS))
